@@ -1,6 +1,5 @@
 package test.pivotal.pal.tracker;
 
-
 import com.mysql.cj.jdbc.MysqlDataSource;
 import io.pivotal.pal.tracker.JdbcTimeEntryRepository;
 import io.pivotal.pal.tracker.TimeEntry;
@@ -63,8 +62,8 @@ public class JdbcTimeEntryRepositoryTest {
     @Test
     public void findFindsATimeEntry() throws Exception {
         jdbcTemplate.execute(
-            "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
-                "VALUES (999, 123, 321, '2017-01-09', 8)"
+                "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
+                        "VALUES (999, 123, 321, '2017-01-09', 8)"
         );
 
         TimeEntry timeEntry = subject.find(999L);
@@ -86,8 +85,8 @@ public class JdbcTimeEntryRepositoryTest {
     @Test
     public void listFindsAllTimeEntries() throws Exception {
         jdbcTemplate.execute(
-            "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
-                "VALUES (999, 123, 321, '2017-01-09', 8), (888, 456, 678, '2017-01-08', 9)"
+                "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
+                        "VALUES (999, 123, 321, '2017-01-09', 8), (888, 456, 678, '2017-01-08', 9)"
         );
 
         List<TimeEntry> timeEntries = subject.list();
@@ -111,8 +110,8 @@ public class JdbcTimeEntryRepositoryTest {
     @Test
     public void updateReturnsTheUpdatedRecord() throws Exception {
         jdbcTemplate.execute(
-            "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
-                "VALUES (1000, 123, 321, '2017-01-09', 8)");
+                "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
+                        "VALUES (1000, 123, 321, '2017-01-09', 8)");
 
         TimeEntry timeEntryUpdates = new TimeEntry(456, 987, LocalDate.parse("2017-01-10"), 10);
 
@@ -128,8 +127,8 @@ public class JdbcTimeEntryRepositoryTest {
     @Test
     public void updateUpdatesTheRecord() throws Exception {
         jdbcTemplate.execute(
-            "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
-                "VALUES (1000, 123, 321, '2017-01-09', 8)");
+                "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
+                        "VALUES (1000, 123, 321, '2017-01-09', 8)");
 
         TimeEntry updatedTimeEntry = new TimeEntry(456, 322, LocalDate.parse("2017-01-10"), 10);
 
@@ -147,8 +146,8 @@ public class JdbcTimeEntryRepositoryTest {
     @Test
     public void deleteRemovesTheRecord() throws Exception {
         jdbcTemplate.execute(
-            "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
-                "VALUES (999, 123, 321, '2017-01-09', 8)"
+                "INSERT INTO time_entries (id, project_id, user_id, date, hours) " +
+                        "VALUES (999, 123, 321, '2017-01-09', 8)"
         );
 
         subject.delete(999L);
