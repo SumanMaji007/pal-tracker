@@ -11,7 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private Boolean disableHttps;
 
-    public SecurityConfiguration(@Value("${https.disabled}") Boolean disableHttps) {
+    public SecurityConfiguration(@Value("${https.disabled:#{false}}")
+                                         Boolean disableHttps) {
         this.disableHttps = disableHttps;
     }
 
